@@ -10,9 +10,8 @@ sub base :Chained('/') :PathPart('') :CaptureArgs(0) {}
 sub home :Chained('base') :PathPart('home') Args(0) {
     my ($self, $c) = @_;
     $c->view('Home',
-        title => 'A Dark and Stormy Night...',
-        body=> 'It was a dark and stormy night.',
-    )->http_ok;
+        body => 'Some Text.',
+    )->wrap('Wrapper', title => 'something')->http_ok;
 }
 
 __PACKAGE__->meta->make_immutable;
