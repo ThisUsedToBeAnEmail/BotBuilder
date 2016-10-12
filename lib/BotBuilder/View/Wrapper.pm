@@ -5,7 +5,7 @@ use HTTP::Status qw(:constants);
 
 extends 'Catalyst::View::Template::Pure';
 
-has [qw/title content/] => (is => 'ro', required => 1);
+has [qw/content/] => (is => 'ro', required => 1);
 
 sub current { scalar localtime }
 
@@ -51,7 +51,6 @@ __PACKAGE__->config(
     </html>      
   ],
   directives => [
-    'title' => 'title',
     '#content' => 'content',
   ],
 );

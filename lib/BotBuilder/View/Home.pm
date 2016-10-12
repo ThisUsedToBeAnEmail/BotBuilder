@@ -2,6 +2,7 @@ package BotBuilder::View::Home;
 
 use Moose;
 use HTTP::Status qw(:constants);
+use Catalyst::View::Template::Pure::Helpers (':All');
 
 extends 'Catalyst::View::Template::Pure';
 
@@ -19,6 +20,7 @@ __PACKAGE__->config(
             <div id="timestamp">Server Started on: </div>
   ],
   directives => [
+    '.' => Wrap('Wrapper'),
     '#main' => 'body',
     '#current+' => 'current',
     '#timestamp+' => 'timestamp',
