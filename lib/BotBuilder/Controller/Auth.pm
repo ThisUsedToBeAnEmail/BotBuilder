@@ -2,30 +2,28 @@ package BotBuilder::Controller::Auth;
 use Moose;
 use namespace::autoclean;
 
-BEGIN { extends 'Catalyst::Controller'; }
+BEGIN { extends 'BotBuilder::Controller'; }
+
+use BotBuilder::Form::Login;
 
 sub base :Chained('/') :PathPart('auth') :CaptureArgs('0') { }
 
 sub login :Chained('base') :PathPart('login') :Args('0') {
      my ( $self, $c ) = @_;
 
-     my $username = $c->req->params->{username};
-     my $password = $c->req->params->{password};
-     my $message = "";
+    my $form = BotBuilder::Form::Login->new;
+    $c->stash(form => $form);
 
-     if ( $username && $password ) {
-        if ( $c->authenticate({ username => $username, password => $password }) ) {
-            $c->response->redirect($c->uri_for('/'));
-         } else {
-             $message = "Wrong username or password";
-         }
-      } else {
-          $message = "Enter username and password"
-                unless ($c->user_exists);
-      }
+    $form->process(params => $c->req->params);
 
-      # umm
-      $c->view('FormTable', message => $message);
+    if ($form->validated) {
+        my $param = $form->params;
+        if ( $c->authenticate({ username => $param->{username}, password => $param->{password}}) ) {
+            $c->response->redirect($c->uri_for('/home'));
+        } else {
+            $form->add_form_error('Invalid username or password');
+        }
+    }
 }
 
 sub logout :Chained('base') :PathPart('logout') :Args('0') {

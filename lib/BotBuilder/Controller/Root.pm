@@ -35,6 +35,21 @@ sub index :Path :Args(0) {
     $c->response->body( $c->welcome_message );
 }
 
+sub auto :Private {
+    my ($self, $c) = @_;
+
+    if ( $c->action->name eq 'login' ){
+        return 1;
+    }
+
+    if ( !$c->user_exists ) {
+        $c->response->redirect($c->uri_for('/auth/login'));
+        return 1;
+    }
+
+    return 1;
+}
+
 =head2 default
 
 Standard 404 error page
