@@ -133,7 +133,6 @@ INSERT INTO user_roles VALUES (1, 1);
 INSERT INTO user_roles VALUES (1, 2);
 INSERT INTO user_roles VALUES (2, 1);
 INSERT INTO user_roles VALUES (3, 1);
-
 INSERT INTO trolls (name, description) VALUES ('Donald Trump', 'First attempt');
 INSERT INTO quotes (troll_id, text) VALUES (1, 'Sometimes your best investments are the ones you dont make');
 INSERT INTO quotes (troll_id, text) VALUES (1, 'Sometimes by losing a battle you find a new way to win the war.');
