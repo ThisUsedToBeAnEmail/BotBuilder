@@ -2,6 +2,7 @@ package BotBuilder::Table::Troll;
 
 use Moo;
 use HTML::TableContent::Template;
+with 'BotBuilder::Table::Role::DBIC';
 
 sub table_spec {
     return {
@@ -23,15 +24,5 @@ header id => (
 header name => ();
 
 header description => ();
-
-sub _data {
-    return [
-        {
-            id => 1,
-            name => 'Donald Trump',
-            description => 'first'
-        }
-    ];
-}
 
 1;

@@ -17,14 +17,14 @@ sub base :Chained('/') :PathPart('troll') :CaptureArgs(0) {
 sub list :Chained('base') :PathPart('list') :Args(0) {
     my ( $self, $c ) = @_;
 
-    my $table = BotBuilder::Table::Troll->new();
+    my $table = BotBuilder::Table::Troll->new(rs => $c->stash->{resultset});
     $c->stash(table => $table);
 }
 
 sub create :Chained('base') :PathPart('create') :Args(0) {
     my ($self, $c) = @_;
 
-    my $troll = $c->model('DB::Troll')->new_result({});
+    my $troll = $c->stash->{resultset}->new_result({});
     return $self->form($c, $troll);
 }
 
