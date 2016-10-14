@@ -6,6 +6,7 @@ use namespace::autoclean;
 BEGIN { extends 'BotBuilder::Controller'; }
 
 use BotBuilder::Form::Troll;
+use BotBuilder::Table::Troll;
 
 sub base :Chained('/') :PathPart('troll') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
@@ -16,14 +17,15 @@ sub base :Chained('/') :PathPart('troll') :CaptureArgs(0) {
 sub list :Chained('base') :PathPart('list') :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash(table => );
+    my $table = BotBuilder::Table::Troll->new();
+    $c->stash(table => $table);
 }
 
 sub create :Chained('base') :PathPart('create') :Args(0) {
     my ($self, $c) = @_;
 
     my $troll = $c->model('DB::Troll')->new_result({});
-    return $self->form($c, $quote);
+    return $self->form($c, $troll);
 }
 
 sub chain :Chained('base') :PathPart('') :CaptureArgs(1) :Name('troll') {

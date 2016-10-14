@@ -2,7 +2,7 @@ package MyApp::Form::Troll;
 
 use HTML::FormHandler::Moose;
 extends 'HTML::FormHandler::Model::DBIC';
-with 'BotBuilder::Theme::Boot';
+with 'BotBuilder::Form::Theme::Boot';
 
 use namespace::autoclean;
 
