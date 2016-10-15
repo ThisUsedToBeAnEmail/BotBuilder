@@ -12,7 +12,7 @@ sub _data {
 
     my $rs = $self->rs;
     $rs->result_class('DBIx::Class::ResultClass::HashRefInflator');
-    my @data = map { $_ } $rs->next;
+    my @data = map { $_ } $rs->all;
     return \@data;
 }
 

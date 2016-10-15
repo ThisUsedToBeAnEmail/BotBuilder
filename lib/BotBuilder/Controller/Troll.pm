@@ -18,6 +18,9 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
     my ( $self, $c ) = @_;
 
     my $table = BotBuilder::Table::Troll->new(rs => $c->stash->{resultset});
+    
+    use Data::Dumper;
+    warn Dumper $table->render;
     $c->stash(table => $table);
 }
 
@@ -49,14 +52,14 @@ sub edit :Chained('chain') :PathPart('edit') :Args(0) {
 }
 
 sub form {
-    my ($self, $c, $quote) = @_;
+    my ($self, $c, $troll) = @_;
 
     my $form = BotBuilder::Form::Troll->new(
-        id => $quote->id,
+        id => $troll->id,
     );
         
     $c->stash( form => $form );
-    $form->process( item => $quote, params => $c->req->params );
+    $form->process( item => $troll, params => $c->req->params );
     return unless $form->validated;
 
     $c->response->redirect($c->link('list'));
