@@ -16,10 +16,10 @@
     <div class="cover-container">
       <div class="masthead clearfix">
         <div class="inner">
-          <h3 class="masthead-brand">Cover</h3>
+          <h3 class="masthead-brand">BotBuilder</h3>
           <nav class="nav nav-masthead">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="[% c.link('/troll/list') %]">Trolls</a>
+            <a class="nav-link" href="[% c.link('/quote/list') %]">Quotes</a>
             <a class="nav-link" href="#">Contact</a>
           </nav>
         </div>

@@ -1,4 +1,4 @@
-package BotBuilder::Table::Troll;
+package BotBuilder::Table::Quote;
 
 use Moo;
 use HTML::TableContent::Template;
@@ -15,8 +15,8 @@ sub table_spec {
 }
 
 caption title => (
-    text => 'Troll Table',
-    links => ['http://localhost:3000/troll/create'],
+    text => 'Quotes Table',
+    links => ['http://localhost:3000/quote/create'],
     inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 
@@ -25,14 +25,15 @@ header id => (
     sort => 1,
 );
 
-header name => (
+header troll_id => (
     search => 1,
     sort => 1,
 );
 
-header description => (
+header text => (
     search => 1,
     sort => 1,
+    text => 'Quotes'
 );
 
 1;

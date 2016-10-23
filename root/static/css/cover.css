@@ -93,6 +93,31 @@ body {
   border-bottom-color: #fff;
 }
 
+.table-hover>tbody>tr:hover {
+    background: #424242;
+}
+
+.table-responsive input {
+    margin-bottom: -150px;
+    float: right;
+    width: 300px;
+    color: #3a3a3a;
+}
+
+.table-responsive caption h2 {
+    display: inline-block;
+    margin: 0;
+    color: #fff;
+}
+
+caption {
+    padding-top: 0px;
+}
+
+.table-button {
+    margin: 0 25px;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
@@ -155,6 +180,6 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 42rem;
+    width: 90rem;
   }
 }
