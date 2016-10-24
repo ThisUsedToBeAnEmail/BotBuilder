@@ -7,6 +7,7 @@ BEGIN { extends 'BotBuilder::Controller'; }
 
 use BotBuilder::Form::Troll;
 use BotBuilder::Table::Troll;
+use BotBuilder::Table::TrollInfo;
 
 sub base :Chained('/') :PathPart('troll') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
@@ -34,7 +35,9 @@ sub create :Chained('base') :PathPart('create') :Args(0) {
 sub chain :Chained('base') :PathPart('') :CaptureArgs(1) :Name('troll') {
     my ($self, $c, $id) = @_;
 
-    $c->stash(troll => $c->stash->{resultset}->find($id));
+    my $troll = $c->stash->{resultset}->find($id);
+    my $troll_info = BotBuilder::Table::TrollInfo->new(result => $troll, ctx => $c);
+    $c->stash(troll => $troll, troll_info => $troll_info);
     die "troll $id not found!" unless $c->stash->{troll};
 }
 

@@ -19,9 +19,7 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
 
     my $table = BotBuilder::Table::Quote->new(rs => $c->stash->{resultset}, ctx => $c);
     
-    use Data::Dumper;
-    warn Dumper $table->render;
-    $c->stash(table => $table);
+    $c->stash(table => $table, template => 'quote/list.tt');
 }
 
 sub create :Chained('base') :PathPart('create') :Args(0) {
@@ -58,7 +56,7 @@ sub form {
         id => $quote->id,
     );
         
-    $c->stash( form => $form );
+    $c->stash( form => $form, template => 'quote/form.tt' );
     $form->process( item => $quote, params => $c->req->params );
     return unless $form->validated;
 

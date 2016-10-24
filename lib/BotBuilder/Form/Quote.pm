@@ -2,6 +2,7 @@ package BotBuilder::Form::Quote;
 
 use HTML::FormHandler::Moose;
 extends 'HTML::FormHandler::Model::DBIC';
+with 'BotBuilder::Form::Theme::Boot';
 use namespace::autoclean;
 
 has '+item_class' => ( default => 'Quote' );

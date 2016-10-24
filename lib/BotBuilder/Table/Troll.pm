@@ -37,7 +37,7 @@ header description => (
 );
 
 row all => (
-    link => sub { return $_[0]->ctx->link('view', [$_[1]->get_first_cell->text]); },
+    link => sub { return $_[0]->ctx->link('quote/list', [$_[1]->get_first_cell->text]); },
     onclick => ['window.location=\'%s\'', 'get_first_link']
 );
 
