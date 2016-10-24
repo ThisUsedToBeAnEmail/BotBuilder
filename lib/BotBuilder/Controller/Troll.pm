@@ -17,7 +17,7 @@ sub base :Chained('/') :PathPart('troll') :CaptureArgs(0) {
 sub list :Chained('base') :PathPart('list') :Args(0) {
     my ( $self, $c ) = @_;
 
-    my $table = BotBuilder::Table::Troll->new(rs => $c->stash->{resultset});
+    my $table = BotBuilder::Table::Troll->new(rs => $c->stash->{resultset}, ctx => $c);
     
     use Data::Dumper;
     warn Dumper $table->render;
@@ -49,6 +49,11 @@ sub edit :Chained('chain') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
 
     return $self->form($c, $c->stash->{troll});
+}
+
+sub view :Chained('chain') :PathPart('view') :Args(0) {
+    my ($self, $c) = @_;
+
 }
 
 sub form {

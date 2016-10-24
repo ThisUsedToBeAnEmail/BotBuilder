@@ -3,6 +3,7 @@ package BotBuilder::Table::Troll;
 use Moo;
 use HTML::TableContent::Template;
 with 'BotBuilder::Table::Role::DBIC';
+with 'BotBuilder::Table::Role::Catalyst';
 
 sub table_spec {
     return {
@@ -16,7 +17,7 @@ sub table_spec {
 
 caption title => (
     text => 'Troll Table',
-    links => ['http://localhost:3000/troll/create'],
+    link => sub { return $_[0]->ctx->link('create') },
     inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 
@@ -33,6 +34,11 @@ header name => (
 header description => (
     search => 1,
     sort => 1,
+);
+
+row all => (
+    link => sub { return $_[0]->ctx->link('view', [$_[1]->get_first_cell->text]); },
+    onclick => ['window.location=\'%s\'', 'get_first_link']
 );
 
 1;

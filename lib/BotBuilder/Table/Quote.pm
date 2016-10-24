@@ -3,6 +3,7 @@ package BotBuilder::Table::Quote;
 use Moo;
 use HTML::TableContent::Template;
 with 'BotBuilder::Table::Role::DBIC';
+with 'BotBuilder::Table::Role::Catalyst';
 
 sub table_spec {
     return {
@@ -16,7 +17,7 @@ sub table_spec {
 
 caption title => (
     text => 'Quotes Table',
-    links => ['http://localhost:3000/quote/create'],
+    link => sub { $_[0]->ctx->link('create') },
     inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 

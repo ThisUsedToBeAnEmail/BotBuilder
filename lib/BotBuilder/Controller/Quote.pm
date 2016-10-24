@@ -17,7 +17,7 @@ sub base :Chained('/') :PathPart('quote') :CaptureArgs(0) {
 sub list :Chained('base') :PathPart('list') :Args(0) {
     my ( $self, $c ) = @_;
 
-    my $table = BotBuilder::Table::Quote->new(rs => $c->stash->{resultset});
+    my $table = BotBuilder::Table::Quote->new(rs => $c->stash->{resultset}, ctx => $c);
     
     use Data::Dumper;
     warn Dumper $table->render;
