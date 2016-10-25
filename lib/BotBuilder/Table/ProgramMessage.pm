@@ -22,7 +22,7 @@ caption title => (
 );
 
 header id => (
-    text => 'Troll Id',
+    text => 'Id',
     sort => 1,
 );
 

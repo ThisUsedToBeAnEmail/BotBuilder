@@ -1,4 +1,4 @@
-package BotBuilder::Table::Contact;
+package BotBuilder::Table::Bot;
 
 use Moo;
 use HTML::TableContent::Template;
@@ -16,26 +16,38 @@ sub table_spec {
 }
 
 caption title => (
-    text => 'Contact Table',
+    text => 'Bot Table',
     link => sub { $_[0]->ctx->link('create') },
     inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 
 header id => (
-    text => 'Id',
+    text => 'Bot Id',
     sort => 1,
 );
 
-header fb_id => (
-    search => 1,
+header bot_type_id => (
+    text => 'Bot Type Id',
     sort => 1,
-    text => 'FB ID'
 );
 
-header program_id => (
+header name => (
     search => 1,
     sort => 1,
-    text => 'Program ID'
+);
+
+header active => (
+    search => 1,
+    sort => 1,
+    filter => 1,
+);
+
+header created => (
+    sort => 1,
+);
+
+header updated => (
+    sort => 1
 );
 
 1;

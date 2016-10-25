@@ -16,13 +16,13 @@ sub table_spec {
 }
 
 caption title => (
-    text => 'Quotes Table',
+    text => 'Message Table',
     link => sub { $_[0]->ctx->link('create') },
     inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 
 header id => (
-    text => 'Troll Id',
+    text => 'Message Id',
     sort => 1,
 );
 

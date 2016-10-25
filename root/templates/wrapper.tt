@@ -18,13 +18,18 @@
         <div class="inner">
           <h3 class="masthead-brand">BotBuilder</h3>
           <nav class="nav nav-masthead">
+            <a class="nav-link" href="[% c.link('/fbbot/list') %]">Fb Bot</a>
+            <a class="nav-link" href="[% c.link('/slackbot/list') %]">Slack Bot</a>
+            <a class="nav-link" href="[% c.link('/bot/list') %]">Bot</a>
+            <a class="nav-link" href="[% c.link('/bottype/list') %]">Bot Type</a>
+            <a class="nav-link" href="[% c.link('/botintegration/list') %]">Bot Integration</a>
             <a class="nav-link" href="[% c.link('/troll/list') %]">Trolls</a>
             <a class="nav-link" href="[% c.link('/quote/list') %]">Quotes</a>
             <a class="nav-link" href="[% c.link('/message/list') %]">Message</a>
             <a class="nav-link" href="[% c.link('/program/list') %]">Program</a>
             <a class="nav-link" href="[% c.link('/programmessage/list') %]">Program Messages</a>
             <a class="nav-link" href="[% c.link('/contact/list') %]">Program Contact</a>
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="[% c.link('/response/list') %]">Program Response</a>
           </nav>
         </div>
       </div>
