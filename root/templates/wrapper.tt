@@ -20,6 +20,10 @@
           <nav class="nav nav-masthead">
             <a class="nav-link" href="[% c.link('/troll/list') %]">Trolls</a>
             <a class="nav-link" href="[% c.link('/quote/list') %]">Quotes</a>
+            <a class="nav-link" href="[% c.link('/message/list') %]">Message</a>
+            <a class="nav-link" href="[% c.link('/program/list') %]">Program</a>
+            <a class="nav-link" href="[% c.link('/programmessage/list') %]">Program Messages</a>
+            <a class="nav-link" href="[% c.link('/contact/list') %]">Program Contact</a>
             <a class="nav-link" href="#">Contact</a>
           </nav>
         </div>
