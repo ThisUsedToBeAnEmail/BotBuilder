@@ -45,15 +45,26 @@ __PACKAGE__->table("bots");
   is_nullable: 0
   sequence: 'bots_id_seq'
 
-=head2 bot_type_id
+=head2 name
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 description
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 troll_id
 
   data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 name
+=head2 program_id
 
-  data_type: 'text'
+  data_type: 'integer'
+  is_foreign_key: 1
   is_nullable: 1
 
 =head2 active
@@ -84,10 +95,14 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "bots_id_seq",
   },
-  "bot_type_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "name",
   { data_type => "text", is_nullable => 1 },
+  "description",
+  { data_type => "text", is_nullable => 1 },
+  "troll_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "program_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "active",
   { data_type => "boolean", default_value => \"false", is_nullable => 0 },
   "created",
@@ -130,18 +145,38 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 bot_type
+=head2 program
 
 Type: belongs_to
 
-Related object: L<BotBuilder::Schema::Result::BotType>
+Related object: L<BotBuilder::Schema::Result::Program>
 
 =cut
 
 __PACKAGE__->belongs_to(
-  "bot_type",
-  "BotBuilder::Schema::Result::BotType",
-  { id => "bot_type_id" },
+  "program",
+  "BotBuilder::Schema::Result::Program",
+  { id => "program_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
+
+=head2 troll
+
+Type: belongs_to
+
+Related object: L<BotBuilder::Schema::Result::Troll>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "troll",
+  "BotBuilder::Schema::Result::Troll",
+  { id => "troll_id" },
   {
     is_deferrable => 0,
     join_type     => "LEFT",
@@ -151,8 +186,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-11 20:23:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xFQnFktreWRU7135ia7xjg
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-26 10:41:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7Zh6+8eguoh3JDabKut/rw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

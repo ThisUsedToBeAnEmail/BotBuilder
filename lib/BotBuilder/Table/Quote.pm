@@ -2,8 +2,9 @@ package BotBuilder::Table::Quote;
 
 use Moo;
 use HTML::TableContent::Template;
-with 'BotBuilder::Table::Role::DBIC';
-with 'BotBuilder::Table::Role::Catalyst';
+with 'HTML::TableContent::Template::Javascript';
+with 'HTML::TableContent::Template::DBIC';
+with 'HTML::TableContent::Template::Catalyst';
 
 sub table_spec {
     return {
@@ -29,6 +30,9 @@ header id => (
 header troll_id => (
     search => 1,
     sort => 1,
+    relationship => 'troll',
+    field => 'name',
+    text => 'Troll Name'
 );
 
 header text => (

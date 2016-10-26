@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS slack_bots;
 DROP TABLE IF EXISTS bot_integrations;
 DROP TABLE IF EXISTS fb_bots;
 DROP TABLE IF EXISTS bots;
-DROP TABLE IF EXISTS bot_types;
 DROP TABLE IF EXISTS quotes;
 DROP TABLE IF EXISTS trolls;
 DROP TABLE IF EXISTS program_messages;
@@ -66,18 +65,12 @@ CREATE TABLE programs (
     created     TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE bot_types (
-    id          SERIAL PRIMARY KEY,
-    bot_type    TEXT,
-    description TEXT,
-    troll_id    INTEGER REFERENCES trolls(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    program_id  INTEGER REFERENCES programs(id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 CREATE TABLE bots (
     id          SERIAL PRIMARY KEY,
-    bot_type_id INTEGER REFERENCES bot_types(id) ON DELETE CASCADE ON UPDATE CASCADE,
     name        TEXT,
+    description TEXT,
+    troll_id    INTEGER REFERENCES trolls(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    program_id  INTEGER REFERENCES programs(id) ON DELETE CASCADE ON UPDATE CASCADE,
     active      BOOLEAN NOT NULL DEFAULT FALSE,
     created     TIMESTAMP NOT NULL DEFAULT now(),
     updated     TIMESTAMP
@@ -98,7 +91,7 @@ CREATE TABLE contacts (
 
 CREATE TABLE messages (
     id              SERIAL PRIMARY KEY,
-   content         TEXT,
+    content         TEXT,
     template_type   TEXT,
     date_created    TIMESTAMP NOT NULL DEFAULT NOW()
 );

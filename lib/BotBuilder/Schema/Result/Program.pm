@@ -92,17 +92,17 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 bot_types
+=head2 bots
 
 Type: has_many
 
-Related object: L<BotBuilder::Schema::Result::BotType>
+Related object: L<BotBuilder::Schema::Result::Bot>
 
 =cut
 
 __PACKAGE__->has_many(
-  "bot_types",
-  "BotBuilder::Schema::Result::BotType",
+  "bots",
+  "BotBuilder::Schema::Result::Bot",
   { "foreign.program_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -138,8 +138,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-11 20:23:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4xnCqcsMgu/7VAbUe1MooQ
+# Created by DBIx::Class::Schema::Loader v0.07045 @ 2016-10-26 10:41:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kEbKoPeginEJKVoMba/T7Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

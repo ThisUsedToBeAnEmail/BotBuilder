@@ -2,8 +2,10 @@ package BotBuilder::Table::Bot;
 
 use Moo;
 use HTML::TableContent::Template;
-with 'BotBuilder::Table::Role::DBIC';
-with 'BotBuilder::Table::Role::Catalyst';
+
+with 'HTML::TableContent::Template::Javascript';
+with 'HTML::TableContent::Template::DBIC';
+with 'HTML::TableContent::Template::Catalyst';
 
 sub table_spec {
     return {
@@ -26,15 +28,23 @@ header id => (
     sort => 1,
 );
 
-header bot_type_id => (
-    text => 'Bot Type Id',
-    sort => 1,
-);
-
 header name => (
     search => 1,
     sort => 1,
 );
+
+header description => (
+    search => 1,
+);
+
+header troll_id => (
+    sort => 1,
+);
+
+header program_id => (
+    sort => 1,
+);
+
 
 header active => (
     search => 1,

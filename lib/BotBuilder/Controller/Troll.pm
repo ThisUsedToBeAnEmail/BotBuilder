@@ -21,6 +21,7 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
     my $table = BotBuilder::Table::Troll->new(rs => $c->stash->{resultset}, ctx => $c);
     
     use Data::Dumper;
+    warn Dumper $table->table;
     warn Dumper $table->render;
     $c->stash(table => $table);
 }

@@ -2,8 +2,10 @@ package BotBuilder::Table::BotIntegration;
 
 use Moo;
 use HTML::TableContent::Template;
-with 'BotBuilder::Table::Role::DBIC';
-with 'BotBuilder::Table::Role::Catalyst';
+
+with 'HTML::TableContent::Template::Javascript';
+with 'HTML::TableContent::Template::DBIC';
+with 'HTML::TableContent::Template::Catalyst';
 
 sub table_spec {
     return {

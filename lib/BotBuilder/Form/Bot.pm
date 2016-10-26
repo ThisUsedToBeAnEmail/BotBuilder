@@ -7,40 +7,45 @@ use namespace::autoclean;
 
 has '+item_class' => ( default => 'Quote' );
 
-has_field 'bot_type_id' => (
-    type => 'Select',
-    label => 'Bot Type',
-    required => 1
-);
-
-sub options_bot_type_id {
-    my $self = shift;
-
-    return unless $self->schema;
-    my $types_rs = $self->schema->resultset('BotType');
-    my @types = map { { value => $_->id, label => $_->name } } $types_rs->all;
-    return @types;
-}
-
 has_field 'name' => (
     type => 'Text',
     required => 1
 );
 
-has_field 'slack_channel' => (
-    type => 'Text',
+has_field 'description' => (
+    type => 'TextArea',
     required => 1
 );
 
-has_field 'slack_hook' => (
-    type => 'Text',
+has_field 'troll_id' => (
+    type => 'Select',
+    label => 'Troll',
     required => 1
 );
 
-has_field 'fb_token' => (
-    type => 'Text',
-    required => 1
+sub options_troll_id {
+    my $self = shift;
+
+    return unless $self->schema;
+    my $troll_rs = $self->schema->resultset('Troll');
+    my @trolls = map { { value => $_->id, label => $_->name } } $troll_rs->all;
+    return @trolls;
+}
+
+has_field 'program_id' => (
+    type => 'Select',
+    label => 'Program',
 );
+
+sub options_program_id {
+    my $self = shift;
+
+    return unless $self->schema;
+    my $program_rs = $self->schema->resultset('Program');
+    my @programs = map { { value => $_->id, label => $_->name } } $program_rs->all;
+    return @programs;
+}
+
 
 has_field 'active' => (
     type => 'Boolean',

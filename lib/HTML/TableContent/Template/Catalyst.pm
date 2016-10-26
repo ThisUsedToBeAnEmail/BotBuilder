@@ -1,4 +1,4 @@
-package BotBuilder::Table::Role::Catalyst;
+package HTML::TableContent::Template::Catalyst;
 
 use Moo::Role;
 

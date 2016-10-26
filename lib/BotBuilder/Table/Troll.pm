@@ -2,8 +2,10 @@ package BotBuilder::Table::Troll;
 
 use Moo;
 use HTML::TableContent::Template;
-with 'BotBuilder::Table::Role::DBIC';
-with 'BotBuilder::Table::Role::Catalyst';
+
+with 'HTML::TableContent::Template::Catalyst';
+with 'HTML::TableContent::Template::DBIC';
+with 'HTML::TableContent::Template::Javascript';
 
 sub table_spec {
     return {
