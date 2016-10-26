@@ -39,12 +39,19 @@ header description => (
 
 header troll_id => (
     sort => 1,
+    relationship => 'troll',
+    field => 'name',
+    text => 'Troll',
+    cells => {
+        link => sub { return $_[0]->ctx->link('troll/quote/list', [$_[0]->id->get_last_cell->text, $_[1]->attributes->{original_text}]) },
+        inner_html => ['<a href="%s">%s</a>', 'get_first_link', 'text']
+    }
 );
 
 header program_id => (
     sort => 1,
+    text => 'Program',
 );
-
 
 header active => (
     search => 1,

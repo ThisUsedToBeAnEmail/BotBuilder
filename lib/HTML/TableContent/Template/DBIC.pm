@@ -53,6 +53,7 @@ sub _row_from_result {
         if (my $relationship = $_->attributes->{relationship}) {
             my $rel = $result->$relationship;
             if ( my $f = $_->attributes->{field}) {
+                $cell_base->{original_text} = $result->$field;
                 $cell_base->{text} = $rel->$f;    
             } else {
                 die "You need to define a field for $field - $relationship";
