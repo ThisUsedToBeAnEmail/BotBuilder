@@ -19,6 +19,23 @@ a:hover {
   border: .05rem solid #fff;
 }
 
+.nav>li>a:hover {
+    background-color: #4a4a4a;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #f5f5f5;
+    color: #262626;
+}
+
+.dropdown-menu>li>a {
+    background-color: #4a4a4a;
+    color: #fff;
+}
+.dropdown-menu {
+    background-color: #312f2f;
+}
+
 
 /*
  * Base structure
