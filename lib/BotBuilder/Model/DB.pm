@@ -7,9 +7,10 @@ __PACKAGE__->config(
     schema_class => 'BotBuilder::Schema',
     
     connect_info => {
-        dsn => 'dbi:Pg:dbname=botbuilder',
+        dsn => 'dbi:Pg:dbname=botbuilder;host=localhost',
         user => 'bot',
-        password => '{ AUTOCOMMIT => 1 }',
+        password => 'builder',
+        AutoCommit => q{1},
     }
 );
 
@@ -31,7 +32,7 @@ Catalyst::Helper::Model::DBIC::Schema - 0.65
 
 =head1 AUTHOR
 
-Robert Acock
+LNATION
 
 =head1 LICENSE
 

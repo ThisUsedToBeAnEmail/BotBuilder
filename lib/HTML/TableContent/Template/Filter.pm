@@ -18,7 +18,6 @@ around last_chance => sub {
     my $table = $self->$orig($args);
 };
 
-
 no Moo::Role;
 
 1;

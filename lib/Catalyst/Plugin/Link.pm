@@ -6,11 +6,11 @@ use Data::Dumper;
 sub link {
     my ( $c, $action_name, $args, $query_values ) = @_;
 
-    foreach my $dispatch ( @{ $c->dispatcher->dispatch_types } ) {
-        foreach my $endpoints (  @{ $dispatch->{_endpoints} } ) {
-            warn Dumper $endpoints->reverse;
-        }
-    }
+   #foreach my $dispatch ( @{ $c->dispatcher->dispatch_types } ) {
+    #    foreach my $endpoints (  @{ $dispatch->{_endpoints} } ) {
+     #       warn Dumper $endpoints->reverse;
+      #  }
+   # }
 
     my $controller = $c->controller;
     # revert to uri_for when a single / is passed in as an action, this will

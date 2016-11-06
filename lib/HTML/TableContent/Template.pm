@@ -69,6 +69,7 @@ sub import {
 
     my $apply_modifiers = sub {
        $with->('HTML::TableContent::Template::Base');
+       $with->('HTML::TableContent::Template::Display');
        $with->('HTML::TableContent::Template::Paginate');
        $with->('HTML::TableContent::Template::Sort');
        $with->('HTML::TableContent::Template::Search');

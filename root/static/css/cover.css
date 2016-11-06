@@ -35,7 +35,9 @@ a:hover {
 .dropdown-menu {
     background-color: #312f2f;
 }
-
+.pagination {
+    margin: 0 0 15px 0;
+}
 
 /*
  * Base structure

@@ -2,6 +2,7 @@ package HTML::TableContent::Template::Javascript;
 
 use Moo::Role;
 
+with 'HTML::TableContent::Template::Javascript::Display';
 with 'HTML::TableContent::Template::Javascript::Paginate';
 with 'HTML::TableContent::Template::Javascript::Sort';
 with 'HTML::TableContent::Template::Javascript::Search';
@@ -52,14 +53,22 @@ sub render_header_js {
 
         return this.paginationPages(active);
     }
+    this.setItemsPerPage = function(display) {
+        console.log(display);
+        itemsPerPage = display;
+        
+        return this.showPage(this.currentPage);
+    }
     this.paginationPages = function(active) {
         var pages = document.getElementsByClassName(\'tc-normal\');
 
         for (var i = 0; i < pages.length; i++) {
             console.log(pages[i].innerText);
-            if (pages[i].innerText == /\d/g) {
-                active = active - this.itemsPerPage;
-                active <= -5
+            if (/^\d+$/.test(pages[i].innerText)) {
+                active = active - itemsPerPage;
+                console.log(itemsPerPage);
+                console.log(active);
+                active <= -1
                     ? pages[i].classList.add(\'search-hide\')
                     : pages[i].classList.remove(\'search-hide\');
             }
@@ -78,8 +87,8 @@ sub render_header_js {
         newPageAnchor.className = \'tc-selected\';
 
         var from = (pageNumber - 1) * itemsPerPage + 1;
-
-        var to = from + itemsPerPage - 1;
+                                            
+        var to = from + (itemsPerPage - 1);
 
         this.showRecords(from, to);
 
@@ -129,8 +138,6 @@ sub render_header_js {
     }
     this.setSortArrow = function (ele, action) {
         var headers = document.getElementById(tableName).rows[0].cells;
-
-        console.log(headers);
 
         for (var i=0; i < headers.length; i++) {
             var cell = headers[i];
