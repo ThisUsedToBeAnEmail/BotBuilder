@@ -72,6 +72,7 @@ sub import {
        $with->('HTML::TableContent::Template::Display');
        $with->('HTML::TableContent::Template::Paginate');
        $with->('HTML::TableContent::Template::Sort');
+       $with->('HTML::TableContent::Template::Filter');
        $with->('HTML::TableContent::Template::Search');
     };
 

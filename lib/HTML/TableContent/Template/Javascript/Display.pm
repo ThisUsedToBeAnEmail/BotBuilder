@@ -14,11 +14,11 @@ around setup_show => sub {
         style => 'float:left;',
     });
 
-    my $select = $para->add_child({ html_tag => 'select', style => 'color:black;' }); 
+    my $select = $para->add_child({ html_tag => 'select', style => 'color:black;', autocomplete => 'off' }); 
     $select->onchange(sprintf "%sTc.setItemsPerPage(this.value)", $self->table_name);
     
     for (@{ $self->display_options }) {
-        my $option = $select->add_child({ html_tag => 'option', text => $_ });
+        my $option = $select->add_child({ html_tag => 'option', text => $_, value => $_ });
 
         if ($_ == $display) {
             $option->selected('selected');

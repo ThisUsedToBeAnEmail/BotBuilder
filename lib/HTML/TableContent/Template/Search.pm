@@ -3,10 +3,13 @@ package HTML::TableContent::Template::Search;
 use Moo::Role;
 use HTML::TableContent::Element;
 
-has searchable => (
+has search_columns => (
     is => 'rw',
     lazy => 1,
+    default => sub { { } },
 );
+
+sub searchable { return defined $_[0]->search_columns; }
 
 around _set_html => sub {
     my ($orig, $self, $args) = @_;
@@ -14,7 +17,7 @@ around _set_html => sub {
     my $element = $self->$orig($args);
 
     if ($element->attributes->{search}) {
-        $self->searchable(1);
+        $self->search_columns->{$element->index} = $element->text;
     }
 
     return $element;

@@ -28,16 +28,15 @@ header id => (
 );
 
 header troll_id => (
-    search => 1,
     sort => 1,
     relationship => 'troll',
     field => 'name',
+    filter => 1,
     text => 'Troll Name'
 );
 
 header text => (
     search => 1,
-    sort => 1,
     text => 'Quotes'
 );
 
