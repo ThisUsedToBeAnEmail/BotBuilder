@@ -168,6 +168,10 @@ caption {
   color: rgba(255,255,255,.5);
 }
 
+.form-control.input-sg {
+    height: 22px;
+    padding: 0px 5px;
+}
 
 /*
  * Affix and center

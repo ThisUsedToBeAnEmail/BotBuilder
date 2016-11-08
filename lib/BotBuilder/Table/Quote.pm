@@ -28,10 +28,10 @@ header id => (
 );
 
 header troll_id => (
+    filter => 1,
     sort => 1,
     relationship => 'troll',
     field => 'name',
-    filter => 1,
     text => 'Troll Name'
 );
 

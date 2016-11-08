@@ -39,10 +39,6 @@ sub unique_cells {
     return $count_cells;   
 }
 
-sub _render_element {
-    return $_[0]->ucf_text;
-}
-
 1;
 
 __PACKAGE__->meta->make_immutable;

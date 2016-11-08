@@ -13,7 +13,7 @@ with 'HTML::TableContent::Template::Javascript::Search';
 after last_chance => sub {
     my ($self, $table) = @_;
 
-    if ($self->sortable || $self->searchable || $self->pagination) {
+    if ($self->sort_options || $self->searchable || $self->pagination) {
         $self->add_pager_js($table);
     }   
     return $table 

@@ -91,6 +91,8 @@ sub _build_tag {
     return lc $tag;
 }
 
+sub has_data { return scalar @{ $_[0]->data } ? 1 : 0; }
+
 sub has_children { return scalar @{ $_[0]->children } ? 1 : 0; }
 
 sub count_children { return scalar @{ $_[0]->children }; }
@@ -235,9 +237,15 @@ sub render {
 
 sub _render_element {
     return $_[0]->text unless $_[0]->has_children;
-
+    
     my @elements = map { $_->render } @{ $_[0]->children };
-    return sprintf '%s' x @elements, @elements;
+    my $ele_html = sprintf '%s' x @elements, @elements;
+
+    return $_[0]->has_data ? sprintf '%s %s', $_[0]->_render_element_text, $ele_html : $ele_html;
+}
+
+sub _render_element_text {
+    return $_[0]->text;
 }
 
 sub _trigger_class { return $_[0]->attributes->{class} = $_[1]; }
