@@ -3,6 +3,13 @@
     [% troll_info.render %]
 [% END %]
 
-[% IF table %]
-    [% table.render %]
-[% END %]
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        [% IF table %]
+            [% table.render %]
+        [% END %]
+    </div>
+</div>  
+
+

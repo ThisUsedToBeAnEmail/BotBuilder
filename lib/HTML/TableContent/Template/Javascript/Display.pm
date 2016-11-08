@@ -11,7 +11,7 @@ around setup_show => sub {
 
     my $para = HTML::TableContent::Element->new({ 
         html_tag => 'p', 
-        style => 'float:left;',
+        style => 'float:right;',
     });
 
     my $select = $para->add_child({ html_tag => 'select', style => 'color:black;', autocomplete => 'off' }); 

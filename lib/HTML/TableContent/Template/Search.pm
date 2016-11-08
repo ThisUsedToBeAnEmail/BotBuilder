@@ -9,6 +9,19 @@ has search_columns => (
     default => sub { { } },
 );
 
+has search_text => (
+    is => 'rw',
+    lazy => 1,
+    builder => 1,
+);
+
+sub _build_search_text {
+    my $self = shift;
+
+    my $table_spec = $self->table_spec;
+    return defined $table_spec->{search_text} ? $table_spec->{search_text} : 'Search table for..';
+}                                                                              
+
 sub searchable { return defined $_[0]->search_columns; }
 
 around _set_html => sub {

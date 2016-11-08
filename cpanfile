@@ -1,0 +1,54 @@
+requires 'Catalyst';
+requires 'FindBin::libs';
+requires 'Catalyst::Controller';
+requires 'Catalyst::Model::DBIC::Schema';
+requires 'Catalyst::Plugin::StatusMessage';
+requires 'Catalyst::Plugin::Session::State::Cookie';
+requires 'Catalyst::Plugin::Session::Store::File';
+requires 'Catalyst::Plugin::Authorization::Roles';
+requires 'Catalyst::Plugin::Static::Simple';
+requires 'Catalyst::Plugin::ConfigLoader';
+requires 'Catalyst::Runtime', '5.80';
+requires 'Catalyst::ScriptRunner';
+requires 'Catalyst::View::TT';
+requires 'Catalyst::Plugin::DateTime';
+requires 'Catalyst::Authentication::Realm::SimpleDB';
+requires 'Config::General';
+requires 'DBIx::Class::Core';
+requires 'DBIx::Class::Schema';
+requires 'Catalyst::Plugin::StackTrace';
+requires 'HTML::FormHandler::Model::DBIC';
+requires 'HTML::FormHandler::Moose';
+requires 'Moose';
+requires 'Moose::Role';
+requires 'MooseX::MarkAsMethods';
+requires 'MooseX::NonMoose';
+requires 'MooseX::MethodAttributes';
+requires 'Perl6::Junction';
+requires 'namespace::autoclean';
+requires 'DBIx::Class::TimeStamp';
+requires 'DBIx::Class::PassphraseColumn';
+requires 'Plack::Builder';
+requires 'DBD::Pg';
+requires 'DBIx::Class::Helper::ResultSet::Random';
+requires 'JSON';
+requires 'LWP::UserAgent';
+requires 'LWP::Protocol';
+requires 'LWP::Protocol::https';
+requires 'DateTime::Format::Pg';
+requires 'Catalyst::ActionRole::RequireSSL';
+requires 'DateTime';
+requires 'DateTime::Duration';
+requires 'FindBin::libs';
+requires 'HTML::SocialMeta', '0.7';
+requires 'Email::Send';
+requires 'Email::Send::Gmail';
+requires 'Email::Simple::Creator';
+requires 'Moo';
+
+on configure => sub {
+    requires 'Module::Install::Catalyst';
+    requires 'inc::Module::Install', '1.02';
+};
+
+

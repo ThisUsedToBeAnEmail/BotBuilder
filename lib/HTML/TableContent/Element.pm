@@ -202,6 +202,13 @@ sub render {
         }
     }
 
+    if ($_[0]->has_children) {
+        my @elements = map { $_->render } @{ $_[0]->children };
+        my $ele_html = sprintf '%s' x @elements, @elements;
+
+        $render = sprintf '%s %s', $render, $ele_html; 
+    }
+
     my $tag = $_[0]->html_tag;
     my $html = sprintf( "<%s %s>%s</%s>", $tag, $attr, $render, $tag );
 
@@ -236,12 +243,8 @@ sub render {
 }
 
 sub _render_element {
-    return $_[0]->text unless $_[0]->has_children;
-    
-    my @elements = map { $_->render } @{ $_[0]->children };
-    my $ele_html = sprintf '%s' x @elements, @elements;
-
-    return $_[0]->has_data ? sprintf '%s %s', $_[0]->_render_element_text, $ele_html : $ele_html;
+    return $_[0]->text;
+  
 }
 
 sub _render_element_text {

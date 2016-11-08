@@ -13,13 +13,14 @@ sub table_spec {
         wrap_html => ['<div class="table-responsive">%s</div>'],
         pagination => 1,
         display => 10,
+        search_text => 'Search Quotes..',
     };
 }
 
 caption title => (
     text => 'Quotes Table',
     link => sub { $_[0]->ctx->link('create') },
-    inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
+    inner_html => ['<h1 class="page-header">%s</h1><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
 );
 
 header id => (

@@ -19,8 +19,7 @@ sub table_spec {
 
 caption title => (
     text => 'Troll Table',
-    link => sub { return $_[0]->ctx->link('create') },
-    inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
+    inner_html => ['<h1 class="page-header">%s</h1>', 'text']
 );
 
 header id => (
@@ -42,5 +41,23 @@ row all => (
     link => sub { return $_[0]->ctx->link('quote/list', [$_[1]->get_first_cell->text]); },
     onclick => ['window.location=\'%s\'', 'get_first_link']
 );
+
+around last_chance => sub {
+    my ($orig, $self, $args) = @_;
+
+    my $table = $self->$orig($args);
+
+    my $caption = $table->caption;
+
+    $caption->add_child({ 
+        html_tag => 'a',
+        link => sub { return $_[0]->ctx->link('create') },
+        class => 'btn btn-info table-button', 
+        role => 'button',
+        text => 'Create' 
+    });
+
+    return $table;
+};
 
 1;
