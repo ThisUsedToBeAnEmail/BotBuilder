@@ -1,5 +1,9 @@
 [% IF troll %]
-    [% troll_info.render %]
+    <div class="row">
+        <div class="col-lg-12">
+            [% troll_info.render %]
+        </div>
+    </div>
 [% END %]
 
 <!-- Page Heading -->

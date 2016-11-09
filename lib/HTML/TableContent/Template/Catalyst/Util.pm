@@ -6,6 +6,8 @@ around _create_buttons => sub {
     my ($orig, $self, $args, $meh) = @_;
 
     my ($element, $button_options) = $self->$orig($args, $meh);
+    
+    return $element unless ref $button_options eq 'ARRAY';
     for (@{ $button_options }) {
         my $sadface = $element;
         if ( $element->tag eq 'row' ) {

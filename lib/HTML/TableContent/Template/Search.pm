@@ -22,7 +22,7 @@ sub _build_search_text {
     return defined $table_spec->{search_text} ? $table_spec->{search_text} : 'Search table for..';
 }                                                                              
 
-sub searchable { return defined $_[0]->search_columns; }
+sub searchable { return keys %{ $_[0]->search_columns } ? 1 : undef; }
 
 around _set_html => sub {
     my ($orig, $self, $args) = @_;

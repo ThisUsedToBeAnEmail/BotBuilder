@@ -18,8 +18,21 @@ sub table_spec {
 
 caption title => (
     text => 'Troll',
-    link => sub { return $_[0]->ctx->link('/troll/delete', [$_[0]->result->id]); },
-    inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Delete</a>', 'text', 'get_first_link']
+    inner_html => ['<h1 class="page-heading">%s</h1>'],
+    buttons => [
+        {
+            method => 'catalyst',
+            text => 'Troll List',
+            link => sub { $_[0]->ctx->link('/troll/list'); },
+            class => 'btn caption-button btn-primary',
+        },
+        {
+            method => 'catalyst',
+            link => sub { return $_[0]->ctx->link('/troll/delete', [$_[0]->result->id]); },
+            text => 'Delete Troll',
+            class => 'btn caption-button btn-danger right',
+        }
+    ]   
 );
 
 header id => (

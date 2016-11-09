@@ -21,7 +21,7 @@ caption title => (
     text => 'Quotes Table',
     link => sub { $_[0]->ctx->link('create') },
     inner_html => [
-        '<h1 class="page-header">%s</h1>', 
+        '<h1 class="page-heading">%s</h1>', 
     ],
     buttons => [
         {

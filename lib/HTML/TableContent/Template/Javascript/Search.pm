@@ -19,7 +19,7 @@ around add_search_box => sub {
         type => 'text',
         id => $search_box_id,
         onkeyup => $keyup,
-        placeholder => $self->search_text
+        placeholder => 'Search for Something...'
     });
 
     return $table;

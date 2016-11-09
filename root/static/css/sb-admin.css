@@ -28,7 +28,17 @@ body {
     height: 22px;
     padding: 0px 5px;
 }
- 
+
+.right {
+    float: right;
+}
+
+.page-heading {
+    padding-bottom: 9px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
 #wrapper {
     padding-left: 0;
 }
@@ -42,6 +52,10 @@ body {
 .huge {
     font-size: 50px;
     line-height: normal;
+}
+
+.link-row:hover {
+    cursor: pointer;
 }
 
 @media(min-width:768px) {

@@ -20,7 +20,15 @@ sub table_spec {
 caption title => (
     text => 'Bot Table',
     link => sub { $_[0]->ctx->link('create') },
-    inner_html => ['<h2>%s</h2><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
+    inner_html => ['<h1 class="page-heading">%s</h1>'],
+    buttons => [
+        {
+            method => 'catalyst',
+            text => 'Add New Bot',
+            class => 'btn caption-button btn-success',
+            link => sub { $_[0]->ctx->link('create'); },
+        }
+    ]
 );
 
 header id => (
@@ -66,5 +74,36 @@ header created => (
 header updated => (
     sort => 1
 );
+
+header edit => (
+    special => 1,
+    text => '',
+    cells => {
+        buttons => [
+            {
+                method => 'catalyst',
+                text => 'Edit',
+                class => 'btn row-button btn-warning',
+                link =>  sub { $_[0]->ctx->link('edit', [$_[0]->id->get_last_cell($_[1]->row_index)->text]) },
+            }
+        ]
+    }
+);
+
+header delete => (
+    special => 1,
+    text => '',
+    cells => {
+        buttons => [
+            {
+                method => 'catalyst',
+                text => 'Delete',
+                class => 'btn row-button btn-danger',
+                link =>  sub { $_[0]->ctx->link('delete', [$_[0]->id->get_last_cell->text]) },
+            }
+        ]
+    }
+);
+ 
 
 1;

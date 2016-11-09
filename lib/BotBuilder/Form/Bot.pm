@@ -43,13 +43,13 @@ sub options_program_id {
     return unless $self->schema;
     my $program_rs = $self->schema->resultset('Program');
     my @programs = map { { value => $_->id, label => $_->name } } $program_rs->all;
+    unshift @programs, { value => '', label => 'None' };
     return @programs;
 }
 
 
 has_field 'active' => (
     type => 'Boolean',
-    required => 1
 );
 
 has_field 'submit' => (
