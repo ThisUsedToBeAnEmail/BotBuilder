@@ -24,9 +24,10 @@ around _set_html => sub {
     my ($orig, $self, $args) = @_;
     
     my $element = $self->$orig($args);
+
     my $tag = $element->tag;
         
-    if (my $button_options = $self->button_options->{$tag}){
+    if (my $button_options = $self->button_options->{$tag} || $element->attributes->{buttons}){
         $element = $self->_create_buttons($element, $button_options);
     }   
 
