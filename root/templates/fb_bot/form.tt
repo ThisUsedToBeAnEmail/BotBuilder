@@ -1,1 +1,15 @@
-[% form.render %]
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+        [% IF fb_bot %]
+           Edit FB BOt - ID: [% fb_bot.id %] 
+        [% ELSE %]
+           Create new FB BOt
+        [% END %]
+        </h1>
+        [% IF form %]
+            [% form.render %]
+        [% END %]
+    </div>
+</div>

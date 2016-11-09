@@ -7,6 +7,13 @@ use namespace::autoclean;
 
 has '+item_class' => ( default => 'Quote' );
 
+has title => (
+    is => 'rw',
+    isa => 'Str',
+    lazy => 1,
+    builder => 1,
+);
+
 has_field 'troll_id' => (
     type => 'Select',
     label => 'Troll',

@@ -1,1 +1,15 @@
-[% form.render %]
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+        [% IF message %]
+           Edit Message - ID: [% message.id %] 
+        [% ELSE %]
+           Create new Message
+        [% END %]
+        </h1>
+        [% IF form %]
+            [% form.render %]
+        [% END %]
+    </div>
+</div>

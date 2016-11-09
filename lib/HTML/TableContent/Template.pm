@@ -74,6 +74,7 @@ sub import {
        $with->('HTML::TableContent::Template::Sort');
        $with->('HTML::TableContent::Template::Filter');
        $with->('HTML::TableContent::Template::Search');
+       $with->('HTML::TableContent::Template::Util');
     };
 
     for my $element (keys %TABLE) {

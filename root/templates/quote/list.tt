@@ -1,5 +1,4 @@
 [% IF troll %]
-    <p>Because I can</p>
     [% troll_info.render %]
 [% END %]
 

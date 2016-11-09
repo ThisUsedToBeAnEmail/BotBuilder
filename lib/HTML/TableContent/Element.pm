@@ -7,7 +7,7 @@ our $VERSION = '0.16';
 
 my @ATTRIBUTE =
   qw/class id style colspan rowspan onclick onchange type onkeyup placeholder scope selected value
-  autocomplete for onFocus onBlur/;
+  autocomplete for onFocus onBlur href role width height/;
 
 around BUILDARGS => sub {
     my ( $orig, $class, $args ) = @_;
@@ -278,6 +278,14 @@ sub _trigger_placeholder { return $_[0]->attributes->{placeholder} = $_[1]; }
 sub _trigger_onFocus { return $_[0]->attributes->{onFocus} = $_[1]; }
 
 sub _trigger_onBlur { return $_[0]->attributes->{onBlur} = $_[1]; }
+
+sub _trigger_role { return $_[0]->attributes->{role} = $_[1]; }
+
+sub _trigger_href { return $_[0]->attributes->{href} = $_[1]; }
+
+sub _trigger_width { return $_[0]->attributes->{width} = $_[1]; }
+
+sub _trigger_height { return $_[0]->attributes->{height} = $_[1]; }
 
 sub _trigger_template_attr {
     return $_[0]->attributes->{template_attr} = $_[1];

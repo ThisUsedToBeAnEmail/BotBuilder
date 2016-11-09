@@ -50,6 +50,7 @@ sub _row_from_result {
         my $cell_base = $self->_element_spec($cell_index++, %cell_spec);
         my $field = $_->template_attr;
         
+        unless ( defined $_->attributes->{special} ) {
         if (my $relationship = $_->attributes->{relationship}) {
             my $rel = $result->$relationship;
             if ( my $f = $_->attributes->{field}) {
@@ -61,7 +62,7 @@ sub _row_from_result {
         } else {
             $cell_base->{text} = $result->$field;
         }
-
+        }
         my $cell = $row->add_cell($cell_base);
         $cell = $self->_set_html($cell);
         $table->parse_to_column($cell);

@@ -23,7 +23,12 @@ body {
     width: 300px;
     color: #3a3a3a;
 } 
-
+ 
+.form-control.input-sg {
+    height: 22px;
+    padding: 0px 5px;
+}
+ 
 #wrapper {
     padding-left: 0;
 }

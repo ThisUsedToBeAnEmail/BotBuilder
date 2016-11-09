@@ -5,6 +5,7 @@ use HTML::TableContent::Template;
 with 'HTML::TableContent::Template::Javascript';
 with 'HTML::TableContent::Template::DBIC';
 with 'HTML::TableContent::Template::Catalyst';
+with 'HTML::TableContent::Template::Catalyst::Util';
 
 sub table_spec {
     return {
@@ -14,13 +15,35 @@ sub table_spec {
         pagination => 1,
         display => 10,
         search_text => 'Search Quotes..',
+        create => {
+            caption => {
+                method => 'catalyst',
+                text => 'Add new Quote',
+            },
+        },
+        update => {
+            row => {
+                method => 'catalyst',
+                text => 'Edit',
+                link => sub { $_[0]->ctx->link('edit', [$_[0]->id->get_last_cell->text]) },
+            },
+        },
+        delete => {
+            row => { 
+                method => 'catalyst',
+                text => 'Delete',
+                link => sub { $_[0]->ctx->link('delete', [$_[0]->id->get_last_cell->text]) },
+            },
+        },
     };
 }
 
 caption title => (
     text => 'Quotes Table',
     link => sub { $_[0]->ctx->link('create') },
-    inner_html => ['<h1 class="page-header">%s</h1><a href="%s" class="btn btn-info table-button" role="button">Create</a>', 'text', 'get_first_link']
+    inner_html => [
+        '<h1 class="page-header">%s</h1>', 
+    ]
 );
 
 header id => (
@@ -41,4 +64,33 @@ header text => (
     text => 'Quotes'
 );
 
+=pod
+header edit => (
+    special => 1,
+    text => '',
+    cells => {
+        text => 'Edit',
+        link =>  sub { $_[0]->ctx->link('edit', [$_[0]->id->get_last_cell($_[1]->row_index)->text]) },
+        inner_html => [
+            '<a href="%s" class="btn btn-info table-button" role="button">%s</a>',
+            'get_first_link', 
+            'text'
+        ]
+    }
+);
+
+header delete => (
+    special => 1,
+    text => '',
+    cells => {
+        text => 'Delete',
+        link =>  sub { $_[0]->ctx->link('delete', [$_[0]->id->get_last_cell->text]) },
+        inner_html => [
+            '<a href="%s" class="btn btn-danger table-button" role="button">%s</a>',
+            'get_first_link', 
+            'text'
+        ]
+    }
+);
+=cut
 1;
